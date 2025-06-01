@@ -2,12 +2,20 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\BlogController;
+use App\Http\Controllers\admin\ChairmanController;
+use App\Http\Controllers\admin\CoreValueController;
+use App\Http\Controllers\admin\MissionController;
 use App\Http\Controllers\admin\PioneersController;
 use App\Http\Controllers\admin\EventsController;
 use App\Http\Controllers\admin\JobOpeningController;
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\SettingsController;
+use App\Http\Controllers\admin\SocialMediaController;
+use App\Http\Controllers\admin\TestimonialsController;
+use App\Http\Controllers\admin\VisionController;
+use App\Http\Controllers\admin\WhoWeAreController;
+use App\Http\Controllers\admin\WorkplaceController;
 use App\Http\Controllers\web\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +91,77 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AdminAuth'
         // Route::get('/', [AboutController::class, 'index'])->name('index');
         Route::get('/', [AboutController::class, 'add'])->name('add');
         Route::post('/store', [AboutController::class, 'store'])->name('store');
+    });
+
+    // Who We Are
+    Route::prefix('who_we_are')->name('who_we_are.')->group(function () {
+        Route::get('/', [WhoWeAreController::class, 'add'])->name('add');
+        Route::post('/store', [WhoWeAreController::class, 'store'])->name('store');
+    });
+
+    // Vision
+    Route::prefix('vision')->name('vision.')->group(function () {
+        Route::get('/', [VisionController::class, 'add'])->name('add');
+        Route::post('/store', [VisionController::class, 'store'])->name('store');
+    });
+
+    // Mission
+    Route::prefix('mission')->name('mission.')->group(function () {
+        Route::get('/', [MissionController::class, 'add'])->name('add');
+        Route::post('/store', [MissionController::class, 'store'])->name('store');
+    });
+
+    // Workplace
+    Route::prefix('workplace')->name('workplace.')->group(function () {
+        Route::get('/', [WorkplaceController::class, 'add'])->name('add');
+        Route::post('/store', [WorkplaceController::class, 'store'])->name('store');
+    });
+
+    // Social Media
+    Route::prefix('social_media')->name('social_media.')->group(function () {
+        Route::get('/', [SocialMediaController::class, 'index'])->name('index');
+        Route::get('/add', [SocialMediaController::class, 'add'])->name('add');
+        Route::post('/store', [SocialMediaController::class, 'store'])->name('store');
+        Route::get('/edit-{id}', [SocialMediaController::class, 'edit'])->name('edit');
+        Route::post('/update-{id}', [SocialMediaController::class, 'update'])->name('update');
+        Route::post('/delete', [SocialMediaController::class, 'delete'])->name('delete');
+        Route::post('/status', [SocialMediaController::class, 'status'])->name('status');
+    });
+
+    // Testimonial
+    Route::prefix('testimonials')->name('testimonials.')->group(function () {
+        Route::get('/', [TestimonialsController::class, 'index'])->name('index');
+        Route::get('/add', [TestimonialsController::class, 'add'])->name('add');
+        Route::post('/store', [TestimonialsController::class, 'store'])->name('store');
+        Route::get('/edit-{id}', [TestimonialsController::class, 'edit'])->name('edit');
+        Route::post('/update-{id}', [TestimonialsController::class, 'update'])->name('update');
+        Route::post('/delete', [TestimonialsController::class, 'delete'])->name('delete');
+        Route::post('/status', [TestimonialsController::class, 'status'])->name('status');
+    });
+
+    // Core Value
+    Route::prefix('core_values')->name('core_values.')->group(function () {
+
+        Route::post('/core/description/store', [CoreValueController::class, 'coreDescriptionStore'])->name('core_description_store');
+
+        Route::get('/', [CoreValueController::class, 'index'])->name('index');
+        Route::get('/add', [CoreValueController::class, 'add'])->name('add');
+        Route::post('/store', [CoreValueController::class, 'store'])->name('store');
+        Route::get('/edit-{id}', [CoreValueController::class, 'edit'])->name('edit');
+        Route::post('/update-{id}', [CoreValueController::class, 'update'])->name('update');
+        Route::post('/delete', [CoreValueController::class, 'delete'])->name('delete');
+        Route::post('/status', [CoreValueController::class, 'status'])->name('status');
+    });
+
+    // Chairman
+    Route::prefix('chairman')->name('chairman.')->group(function () {
+        Route::get('/', [ChairmanController::class, 'index'])->name('index');
+        Route::get('/add', [ChairmanController::class, 'add'])->name('add');
+        Route::post('/store', [ChairmanController::class, 'store'])->name('store');
+        Route::get('/edit-{id}', [ChairmanController::class, 'edit'])->name('edit');
+        Route::post('/update-{id}', [ChairmanController::class, 'update'])->name('update');
+        Route::post('/delete', [ChairmanController::class, 'delete'])->name('delete');
+        Route::post('/status', [ChairmanController::class, 'status'])->name('status');
     });
 
     // Settings

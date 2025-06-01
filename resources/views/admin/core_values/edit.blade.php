@@ -4,60 +4,47 @@
         <div class="d-flex justify-content-between align-items-center">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item fs-5 fw-500">
-                    <a href="#">About Us</a>
+                    <a href="{{ route('admin.core_values.index') }}">Core Value</a>
                 </li>
                 <li class="breadcrumb-item fs-5 fw-500">
-                    <span class="text-dark">Add New</span>
+                    <span class="text-dark">Update</span>
                 </li>
             </ol>
         </div>
     </div>
     <div class="container-fluid">
-
-        @if (Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session::get('success') }}
-            </div>
-        @endif
-
         <div class="row">
             <div class="col-12">
                 <div class="card border-0">
                     <div class="card-body box-shadow">
-                        <form action="{{ route('admin.about.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.core_values.update', $core_values->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-4">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <label for="title">Title
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text" class="form-control" name="title" id="title"
-                                        placeholder="Title" required value="{{ $about->title ?? '' }}">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="title">Sub Title
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" name="sub_title" id="sub_title"
-                                        placeholder="Sub Title" required value="{{ $about->sub_title ?? '' }}">
+                                    <input type="text" class="form-control" name="title" id="title" value="{{ $core_values->title }}" placeholder="Name" required>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <label for="title">Description
+                                    <label for="description">Description
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <textarea class="form-control" name="description" placeholder="Description" id="description" rows="5"
-                                        required>{{ $about->description ?? '' }}</textarea>
+                                    <textarea class="form-control" name="description" id="description" placeholder="Description" rows="5"
+                                        required>{{ $core_values->description }}</textarea>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="image">Image
                                         <span class="text-danger">*</span>
                                     </label>
                                     <input type="file" class="form-control" name="image" id="image">
-                                    <img src="{{ @helper::image_path($about->image) }}" alt="" class="img-fluid hw-50 rounded mt-2">
+                                    <img src="{{ @helper::image_path($core_values->image) }}" alt=""
+                                        class="img-fluid hw-50 rounded mt-2">
                                 </div>
                             </div>
                             <div class="text-end">
-                                <a href="{{ route('admin.about.add') }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ route('admin.core_values.index') }}" class="btn btn-danger">Cancel</a>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>

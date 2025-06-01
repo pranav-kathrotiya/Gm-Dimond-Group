@@ -39,6 +39,46 @@ class helper
                 $path = url(env('ASSETPATHURL') . 'admin/images/about/' . $image);
             }
         }
+        if (Str::contains($image, 'who_we_are')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/who_we_are/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/who_we_are/' . $image);
+            }
+        }
+        if (Str::contains($image, 'vision')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/vision/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/vision/' . $image);
+            }
+        }
+        if (Str::contains($image, 'mission')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/mission/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/mission/' . $image);
+            }
+        }
+        if (Str::contains($image, 'workplace')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/workplace/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/workplace/' . $image);
+            }
+        }
+        if (Str::contains($image, 'social_media')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/social_media/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/social_media/' . $image);
+            }
+        }
+        if (Str::contains($image, 'testimonials')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/testimonials/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/testimonials/' . $image);
+            }
+        }
+        if (Str::contains($image, 'core_values')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/core_values/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/core_values/' . $image);
+            }
+        }
+        if (Str::contains($image, 'chairman')) {
+            if (file_exists(env('ASSETPATHURL') . 'admin/images/chairman/' . $image)) {
+                $path = url(env('ASSETPATHURL') . 'admin/images/chairman/' . $image);
+            }
+        }
         return $path;
     }
 }
